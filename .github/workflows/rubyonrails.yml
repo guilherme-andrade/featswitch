@@ -45,6 +45,8 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./server    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -54,8 +56,11 @@ jobs:
           bundler-cache: true
       # Add or replace any other lints here
       - name: Security audit dependencies
+        working-directory: ${{env.working-directory}}
         run: bin/bundler-audit --update
       - name: Security audit application code
+        working-directory: ${{env.working-directory}}
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
+        working-directory: ${{env.working-directory}}
         run: bin/rubocop --parallel
