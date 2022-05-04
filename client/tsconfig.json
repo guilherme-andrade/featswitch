@@ -1,8 +1,27 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "target": "es5",
     "sourceMap": true,
-  }
+    "resolveJsonModule": true,
+    "paths": {
+      "@UI/*": ["src/modules/UI/*"],
+      "@UI": ["src/modules/UI"],
+      "@I18n/*": ["src/modules/I18n/*"],
+      "@I18n": ["src/modules/I18n"],
+      "@App/*": ["src/modules/App/*"],
+      "@App": ["src/modules/App"],
+      "@Shared/*": ["src/modules/Shared/*"],
+      "@Shared": ["src/modules/Shared"],
+      "@Core/*": ["src/modules/Core/*"],
+      "@Core": ["src/modules/Core"],      
+      "@modules/*": ["src/modules/*"],
+      "@modules": ["src/modules"],
+      "@api/*": ["src/api/*"],
+      "@api": ["src/api"]
+    }    
+  },
+
 }
