@@ -15,7 +15,7 @@ import { Router as AuthRouter } from "@modules/Auth/Components/Router/Router";
 export const App: FC = () => (
   <ThemeProvider theme={baseTheme}>
     <I18nProvider>
-      <DataLayerProvider schema={apiSchema} url={process.env.REACT_APP_API_URL}>
+      <DataLayerProvider schema={apiSchema} url={process.env.API_URL}>
         <RouterProvider>
           <Route path="*" element={<AuthRouter />} />;
         </RouterProvider>

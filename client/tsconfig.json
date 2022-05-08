@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "baseUrl": ".",
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "target": "es5",
+    "isolatedModules": true,
     "sourceMap": true,
     "resolveJsonModule": true,
     "paths": {
@@ -21,7 +25,7 @@
       "@modules": ["src/modules"],
       "@api/*": ["src/api/*"],
       "@api": ["src/api"]
-    }    
+    } 
   },
-
+  "include": ["vite.config.ts"]
 }
