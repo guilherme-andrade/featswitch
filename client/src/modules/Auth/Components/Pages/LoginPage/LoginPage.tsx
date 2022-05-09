@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { AuthLayout } from "../../Layouts/AuthLayout/AuthLayout";
+import { DashboardLayout } from "@modules/Dashboards/Components/Layouts/DashboardLayout/DashboardLayout";
 
 import { Box } from "@UI/Components/Box/Box";
 import { Stack } from "@UI/Components/Stack/Stack";
@@ -12,7 +13,7 @@ import { Button } from "@UI/Components/Button/Button";
 
 export const LoginPage: FC = () => {
   return (
-    <AuthLayout>
+    <DashboardLayout>
       <Box padding="10">
         <Stack spacing="6">
           <Heading size="md">Login Page</Heading>
@@ -28,6 +29,6 @@ export const LoginPage: FC = () => {
           <Button colorScheme="blue">Login</Button>
         </Stack>
       </Box>
-    </AuthLayout>
+    </DashboardLayout>
   );
 };

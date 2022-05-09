@@ -11,13 +11,15 @@ import { baseTheme } from "../../config/theme";
 // Routers
 import { Route } from "@Core/Components/Route/Route";
 import { Router as AuthRouter } from "@modules/Auth/Components/Router/Router";
+import { Router as DashboardsRouter } from "@modules/Dashboards/Components/Router/Router";
 
 export const App: FC = () => (
   <ThemeProvider theme={baseTheme}>
     <I18nProvider>
       <DataLayerProvider schema={apiSchema} url={process.env.API_URL}>
         <RouterProvider>
-          <Route path="*" element={<AuthRouter />} />;
+          <Route path="*" element={<DashboardsRouter />} />;
+          <Route path="/users" element={<AuthRouter />} />;
         </RouterProvider>
       </DataLayerProvider>
     </I18nProvider>
