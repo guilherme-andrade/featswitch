@@ -8,12 +8,10 @@ interface Props extends BoxProps {}
 export const DashboardContainer: FC<Props> = ({ children, ...props }) => {
   return (
     <Box
-      paddingX="12"
-      paddingTop="10"
-      paddingBottom="20"
       minHeight="100vh"
       position="relative"
       background="white"
+      width="full"
       _before={{
         content: "''",
         position: "absolute",
@@ -26,7 +24,17 @@ export const DashboardContainer: FC<Props> = ({ children, ...props }) => {
       }}
       {...props}
     >
-      <Box position="absolute">{children}</Box>
+      <Box
+        position="absolute"
+        width="full"
+        left="0"
+        top="0"
+        paddingX="12"
+        paddingBottom="20"
+        paddingTop="10"
+      >
+        {children}
+      </Box>
     </Box>
   );
 };

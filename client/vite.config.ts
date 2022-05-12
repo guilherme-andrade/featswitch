@@ -1,9 +1,19 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import babel from "vite-plugin-babel";
 import path from "path";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    babel({
+      babelConfig: {
+        babelrc: false,
+        configFile: false,
+        // plugin: ["@babel/plugin-proposal-decorators"],
+      },
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

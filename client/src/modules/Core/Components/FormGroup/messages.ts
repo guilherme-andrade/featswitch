@@ -9,4 +9,8 @@ export default defineMessages({
     id: "errors.invalid",
     defaultMessage: "This {field} is invalid",
   },
+  blank: {
+    id: "errors.blank",
+    defaultMessage: "This {field} can't be blank",
+  },
 });

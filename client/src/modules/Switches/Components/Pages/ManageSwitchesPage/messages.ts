@@ -22,4 +22,20 @@ export default defineMessages({
     defaultMessage:
       "Here you can manage, configure and create AB Tests for all your features using switches.",
   },
+  key: {
+    id: "switches.key",
+    defaultMessage: "Key",
+  },
+  toggle: {
+    id: "switches.toggle",
+    defaultMessage: "Toggle",
+  },
+  on: {
+    id: "switches.on",
+    defaultMessage: "On",
+  },
+  off: {
+    id: "switches.off",
+    defaultMessage: "Off",
+  },
 });

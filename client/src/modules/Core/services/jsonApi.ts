@@ -1,6 +1,8 @@
 const jsonApiErrorMessageCodes = {
   "has already been taken": "taken",
   "is invalid": "invalid",
+  "can't be blank": "blank",
+  "is too short": "tooShort",
 };
 
 export interface IApiError {

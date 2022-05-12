@@ -3,7 +3,9 @@ import { useMutation, QueryArg, ApiClient, StringMap } from "jsonapi-react";
 
 import { formatJsonApiErrors, IApiErrors } from "@Core/services/jsonApi";
 
-interface IExtendedResult<TData = StringMap | StringMap[]> {
+export type { StringMap } from "jsonapi-react";
+
+export interface IExtendedResult<TData = StringMap | StringMap[]> {
   errors?: StringMap;
   data?: TData;
   meta?: StringMap;
@@ -15,19 +17,25 @@ interface IExtendedResult<TData = StringMap | StringMap[]> {
   client: ApiClient;
 }
 
-export function useDataMutation<TData = StringMap | StringMap[]>(
-  queryString: QueryArg,
-  config?: {
-    invalidate?: boolean | string | string[];
-    method?: string;
-    client?: ApiClient;
-  }
-): {
-  mutate: (any) => Promise<IExtendedResult<TData>>;
+export interface IQueryConfig {
+  invalidate?: boolean | string | string[];
+  method?: string;
+  client?: ApiClient;
+}
+
+export type IQueryArg = QueryArg;
+
+export type IUseDataMutationResult<TData = StringMap | StringMap[]> = {
+  mutate: (arg0: any) => Promise<IExtendedResult<TData>>;
   result: IExtendedResult<TData>;
   errors: IApiErrors;
   clearErrors: () => void;
-} {
+};
+
+export function useDataMutation<TData = StringMap | StringMap[]>(
+  queryString: IQueryArg,
+  config?: IQueryConfig
+): IUseDataMutationResult<TData> {
   const [errors, setErrors] = useState<StringMap>({});
   const [jsonApiMutate, result] = useMutation<TData>(queryString, config);
 

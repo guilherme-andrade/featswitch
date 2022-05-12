@@ -18,11 +18,10 @@ import { FormattedMessage } from "@I18n/Components/FormattedMessage/FormattedMes
 import { useI18n } from "@I18n/hooks/useI18n";
 
 // Form
-import { useForm } from "@Core/hooks/useForm";
 import { FormGroup } from "@Core/Components/FormGroup/FormGroup";
 
 // DataLayer
-import { useDataMutation } from "@Core/hooks/useDataMutation";
+import { useDataForm } from "@Core/hooks/useDataForm";
 
 // Routes
 import routes from "../../../config/routes";
@@ -30,13 +29,11 @@ import { useNavigate } from "@Core/hooks/useNavigate";
 
 export const AddSwitchPage: FC = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
   const { formatMessage } = useI18n();
-  const { mutate, errors, clearErrors } = useDataMutation("switches");
+  const { handleSubmit, errors, register, clearErrors } =
+    useDataForm("switches");
 
-  const handleSubmitClick = handleSubmit(async (data) => {
-    const { key } = data;
-    const response = await mutate({ key });
+  const handleSubmitClick = handleSubmit(async (response) => {
     if (!response.errors) {
       navigate(routes.manageFullPath);
     }
@@ -54,7 +51,7 @@ export const AddSwitchPage: FC = () => {
       </DashboardSubtitle>
       <Shell paddingTop="10" paddingBottom="6" minHeight="156" maxWidth="700px">
         <FormGroup
-          {...register("key")}
+          {...register("key", { required: true, minLength: 3 })}
           size="lg"
           autoFocus
           type="text"

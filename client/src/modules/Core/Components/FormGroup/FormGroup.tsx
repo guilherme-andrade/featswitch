@@ -15,10 +15,10 @@ import { Icon } from "@UI/Components/Icon/Icon";
 import { InputGroup } from "@UI/Components/InputGroup/InputGroup";
 import { InputRightElement } from "@UI/Components/InputRightElement/InputRightElement";
 import { InfoCircleIcon } from "@UI/Components/Icons/InfoCircleIcon";
-import { CheckIcon } from "@UI/Components/Icons/CheckIcon";
 import { Input } from "@UI/Components/Input/Input";
 import { Switch } from "@UI/Components/Switch/Switch";
 import type { InputProps } from "@UI/Components/Input/Input";
+import type { SwitchProps } from "@UI/Components/Switch/Switch";
 
 import messages from "./messages";
 import { FormattedMessage } from "@I18n/Components/FormattedMessage/FormattedMessage";
@@ -28,10 +28,13 @@ interface Props extends InputProps {
   helperText?: string;
   labelHint?: string;
   _wrapper?: FormControlProps;
+  _input_wrapper?: FormControlProps;
   leftLabel?: string;
   rightLabel?: string;
   errors?: IApiError[];
   clearErrors?: () => void;
+  onLabel?: SwitchProps["onLabel"];
+  offLabel?: SwitchProps["offLabel"];
 }
 
 const labelFontSizes = {
@@ -47,6 +50,7 @@ export const FormGroup: FC<Props> = forwardRef<Props, "input">(
       helperText,
       labelHint,
       _wrapper,
+      _input_wrapper,
       as,
       leftLabel,
       rightLabel,
@@ -97,7 +101,7 @@ export const FormGroup: FC<Props> = forwardRef<Props, "input">(
           </FormHelperText>
         )}
         <InputGroup>
-          <HStack spacing="2" width="100%">
+          <HStack spacing="2" width="100%" {..._input_wrapper}>
             {leftLabel && <Text>{leftLabel}</Text>}
             <FinalInput {...props} onChange={handleChange} ref={ref} />
             {rightLabel && <Text>{rightLabel}</Text>}
